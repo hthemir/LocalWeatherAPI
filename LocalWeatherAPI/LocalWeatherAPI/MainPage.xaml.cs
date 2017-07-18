@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Model;
+using Service;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Util;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -14,15 +17,11 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
-
 namespace LocalWeatherAPI
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class MainPage : Page
     {
+        Geoposition position;
         public MainPage()
         {
             this.InitializeComponent();
@@ -32,10 +31,34 @@ namespace LocalWeatherAPI
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
+            //prepare map
             var locator = new Geolocator();
             locator.DesiredAccuracyInMeters = 50;
-            var position = await locator.GetGeopositionAsync();
+            position = await locator.GetGeopositionAsync();
             await map.TrySetViewAsync(position.Coordinate.Point, 18);
+
+            //get data
+            string url = Url.getCurrentWeatherByLatitudeLongitude(position.Coordinate.Point.Position.Latitude, position.Coordinate.Point.Position.Longitude);
+            var data = await Client.getData<WeatherModel>(url);
+
+            //set data or error
+            if (data is WeatherModel)
+            {
+                WeatherModel wm = data as WeatherModel;
+                img.Source = wm.current.condition.image;
+                txtCondition.Text = wm.current.condition.text;
+                txtCurrentTempC.Text = wm.current.temp_c.ToString() + "°";
+            }
+            else
+            {
+                Error error = data as Error;
+                txtError.Text = error.message;
+            }
+        }
+
+        private void map_Loaded(object sender, RoutedEventArgs e)
+        {
+            map.MapServiceToken = "ptkhy9lI9bMSTaeuoufZpkAs4MpZb8v";
         }
     }
 }

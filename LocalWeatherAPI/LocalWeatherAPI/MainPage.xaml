@@ -15,8 +15,33 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
         </Grid.RowDefinitions>
         <Maps:MapControl Grid.Row="0"
-            Name="map"/>
+            x:Name="map"
+            Loaded="map_Loaded"/>
+        <Grid Grid.Row="1"
+            x:Name="gridData"
+            Visibility="Visible">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="0"
+                x:Name="img"/>
+            <TextBlock Grid.Column="1"
+                x:Name="txtCondition"
+                VerticalAlignment="Center" Margin="5,0,0,0"
+                FontSize="24"/>
+            <TextBlock Grid.Column="2"
+                x:Name="txtCurrentTempC"
+                VerticalAlignment="Center" Margin="5,0,0,0"
+                FontSize="24"/>
+        </Grid>
+        <TextBlock Grid.Row="1"
+            x:Name="txtError"
+            VerticalAlignment="Center"
+            Visibility="Visible" />
     </Grid>
 </Page>
