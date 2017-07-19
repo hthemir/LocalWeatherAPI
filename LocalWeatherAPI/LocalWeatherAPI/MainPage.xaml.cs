@@ -25,7 +25,6 @@ namespace LocalWeatherAPI
         public MainPage()
         {
             this.InitializeComponent();
-
             this.NavigationCacheMode = NavigationCacheMode.Required;
         }
 
@@ -56,9 +55,16 @@ namespace LocalWeatherAPI
             }
         }
 
-        private void map_Loaded(object sender, RoutedEventArgs e)
+        private void mapLoaded(object sender, RoutedEventArgs e)
         {
             map.MapServiceToken = "ptkhy9lI9bMSTaeuoufZpkAs4MpZb8v";
         }
+
+        private void searchTapped(object sender, TappedRoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(SearchPage));
+        }
+
+        private void mapTapped(object sender, TappedRoutedEventArgs e) { }
     }
 }

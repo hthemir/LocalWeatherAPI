@@ -35,7 +35,12 @@ namespace Util
 
         public static string getCurrentWeatherByLatitudeLongitude(double latitude, double longitude)
         {
-            return baseURL + currentWeather + key + "&lang=pt" + "&q=" + latitude + "," + longitude;
+            return baseURL + currentWeather + key + "&q=" + latitude + "," + longitude;
+        }
+
+        public static string getCurrentWeatherByCity(string cityName)
+        {
+            return baseURL + currentWeather + key + "&q=" + cityName;
         }
     }
 }

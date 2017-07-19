@@ -9,9 +9,7 @@
     xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid
-        Margin="5,10,5,10">
-
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="50" />
@@ -19,17 +17,18 @@
         </Grid.RowDefinitions>
         <Maps:MapControl Grid.Row="0"
             x:Name="map"
-            Loaded="map_Loaded"/>
+            Loaded="mapLoaded"/>
         <Grid Grid.Row="1"
             x:Name="gridData"
-            Visibility="Visible">
+            Visibility="Visible" HorizontalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Image Grid.Column="0"
-                x:Name="img"/>
+                x:Name="img"
+                Margin="5,0,0,0"/>
             <TextBlock Grid.Column="1"
                 x:Name="txtCondition"
                 VerticalAlignment="Center" Margin="5,0,0,0"
@@ -43,5 +42,20 @@
             x:Name="txtError"
             VerticalAlignment="Center"
             Visibility="Visible" />
+        <Grid Grid.Row="2"
+            Background="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="0" 
+                Source="/Assets/map.png"
+                Margin="5"
+                Tapped="mapTapped"/>
+            <Image Grid.Column="1" 
+                Source="/Assets/search.png"
+                Margin="5"
+                Tapped="searchTapped"/>
+        </Grid>
     </Grid>
 </Page>
