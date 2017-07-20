@@ -1,20 +1,11 @@
 ﻿using Model;
 using Service;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Util;
 using Windows.Devices.Geolocation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 namespace LocalWeatherAPI
@@ -44,6 +35,7 @@ namespace LocalWeatherAPI
             if (data is WeatherModel)
             {
                 WeatherModel wm = data as WeatherModel;
+                txtCity.Text = wm.location.name;
                 img.Source = wm.current.condition.image;
                 txtCondition.Text = wm.current.condition.text;
                 txtCurrentTempC.Text = wm.current.temp_c.ToString() + "°";
@@ -51,7 +43,7 @@ namespace LocalWeatherAPI
             else
             {
                 Error error = data as Error;
-                txtError.Text = error.message;
+                txtCity.Text = error.message;
             }
         }
 

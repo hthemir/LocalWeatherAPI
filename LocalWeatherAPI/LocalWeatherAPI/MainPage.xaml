@@ -14,11 +14,16 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="50" />
             <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
         </Grid.RowDefinitions>
         <Maps:MapControl Grid.Row="0"
             x:Name="map"
             Loaded="mapLoaded"/>
-        <Grid Grid.Row="1"
+        <TextBlock Grid.Row="1"
+            x:Name="txtCity"
+            VerticalAlignment="Center" HorizontalAlignment="Center" 
+            FontSize="24"/>        
+        <Grid Grid.Row="2"
             x:Name="gridData"
             Visibility="Visible" HorizontalAlignment="Center">
             <Grid.ColumnDefinitions>
@@ -38,11 +43,7 @@
                 VerticalAlignment="Center" Margin="5,0,0,0"
                 FontSize="24"/>
         </Grid>
-        <TextBlock Grid.Row="1"
-            x:Name="txtError"
-            VerticalAlignment="Center"
-            Visibility="Visible" />
-        <Grid Grid.Row="2"
+        <Grid Grid.Row="3"
             Background="White">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -53,7 +54,7 @@
                 Margin="5"
                 Tapped="mapTapped"/>
             <Image Grid.Column="1" 
-                Source="/Assets/search.png"
+                Source="/Assets/search.png" Opacity="0.3"
                 Margin="5"
                 Tapped="searchTapped"/>
         </Grid>
