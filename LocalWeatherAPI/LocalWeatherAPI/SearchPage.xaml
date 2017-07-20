@@ -26,7 +26,7 @@
             </Grid.RowDefinitions>
                 <TextBlock Grid.Row="1"
                     x:Name="txtError"
-                    VerticalAlignment="Center" />
+                    VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24" />
             <Grid Grid.Row="0" 
                 Background="White">
                 <Grid.ColumnDefinitions>
@@ -34,7 +34,7 @@
                     <ColumnDefinition Width="50" />
                 </Grid.ColumnDefinitions>
                 <TextBox Grid.Column="0"
-                    x:Name="txtSearch"  Text="Cidade"
+                    x:Name="txtSearch"  Text="City"
                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                     GotFocus="txtSearchGotFocus"/>
                 <Image Grid.Column="1"
@@ -45,7 +45,7 @@
             <Image Grid.Row="1"
                 x:Name="imgCondition" VerticalAlignment="Center"/>
             <TextBlock Grid.Row="2"
-                x:Name="txtTemperature" Text="Procure uma cidade"
+                x:Name="txtTemperature" Text="Search a city"
                     FontSize="40" Margin="5" VerticalAlignment="Top" HorizontalAlignment="Center"/>
             <TextBlock Grid.Row="3"
                 x:Name="txtLocation"

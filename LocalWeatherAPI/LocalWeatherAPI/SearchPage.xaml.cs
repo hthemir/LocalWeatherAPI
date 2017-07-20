@@ -38,6 +38,7 @@ namespace LocalWeatherAPI
             if (data is WeatherModel)
             {
                 WeatherModel wm = data as WeatherModel;
+                txtError.Text = "";
                 txtLocation.Text = wm.location.name + ", " + wm.location.region + ", " + wm.location.country;
                 imgCondition.Source = wm.current.condition.image;
                 txtTemperature.Text = wm.current.temp_c + "°";
@@ -50,6 +51,13 @@ namespace LocalWeatherAPI
             {
                 Error error = data as Error;
                 txtError.Text = error.message;
+                txtLocation.Text = "";
+                imgCondition.Source = null;
+                txtTemperature.Text = "";
+                txtFeelsLike.Text = "";
+                txtWind.Text = "";
+                txtPrecipitation.Text = "";
+                txtHumidity.Text = "";
             }
         }
 
